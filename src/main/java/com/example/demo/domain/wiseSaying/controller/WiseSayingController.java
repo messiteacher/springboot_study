@@ -21,7 +21,7 @@ public class WiseSayingController {
         return wiseSayingService.getAllItems();
     }
 
-    @GetMapping("/wiseSaying/write")
+    @GetMapping("/wiseSayings/write")
     public WiseSaying writeWiseSaying(String content, @RequestParam(defaultValue = "no name") String author) {
 
         System.out.println("content = " + content);
@@ -37,7 +37,7 @@ public class WiseSayingController {
 
     @GetMapping("/wiseSayings/{id}/delete")
     public boolean deleteItem(@PathVariable int id) {
-        return wiseSayingService.delete(id);
+        return wiseSayingService.deleteById(id);
     }
 
     @GetMapping("/wiseSayings/{id}/modify")
