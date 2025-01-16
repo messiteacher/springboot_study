@@ -2,21 +2,18 @@ package com.example.demo.domain.wiseSaying.controller;
 
 import com.example.demo.domain.wiseSaying.entity.WiseSaying;
 import com.example.demo.domain.wiseSaying.service.WiseSayingService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class WiseSayingController {
 
-    private WiseSayingService wiseSayingService;
-
-    @Autowired
-    public WiseSayingController(WiseSayingService wiseSayingService) {
-        this.wiseSayingService = wiseSayingService;
-    }
+    private final WiseSayingService wiseSayingService;
 
     @GetMapping("/wiseSayings")
     public List<WiseSaying> getWiseSayings() {
@@ -24,7 +21,11 @@ public class WiseSayingController {
     }
 
     @GetMapping("/wiseSaying/write")
-    public WiseSaying write(String content, String author) {
+    public WiseSaying writeWiseSaying(String content, @RequestParam(defaultValue = "no name") String author) {
+
+        System.out.println("content = " + content);
+        System.out.println("author = " + author);
+
         return wiseSayingService.write("명언1", "작가1");
     }
 }
