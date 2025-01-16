@@ -27,11 +27,16 @@ public class WiseSayingController {
         System.out.println("content = " + content);
         System.out.println("author = " + author);
 
-        return wiseSayingService.write("명언1", "작가1");
+        return wiseSayingService.write(content, author);
     }
 
     @GetMapping("/wiseSayings/{id}")
     public WiseSaying getItem(@PathVariable int id) {
         return wiseSayingService.getItem(id).orElse(null);
+    }
+
+    @GetMapping("/wiseSayings/{id}/delete")
+    public boolean deleteItem(@PathVariable int id) {
+        return wiseSayingService.delete(id);
     }
 }
