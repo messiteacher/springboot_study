@@ -28,4 +28,14 @@ public class WiseSayingController {
 
         return wiseSayingService.write("명언1", "작가1");
     }
+
+    @GetMapping("/wiseSayings/1")
+    public WiseSaying getItem1() {
+        return wiseSayingService.getItem(1).orElse(null);
+    }
+
+    @GetMapping("/wiseSayings/2")
+    public WiseSaying getItem2() {
+        return wiseSayingService.getItem(2).orElse(null);
+    }
 }
